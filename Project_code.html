@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ProejktPython</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Project_code</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -17227,18 +17227,6 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Projekt-z-przedmiotu-J%C4%99zyk-Python-w-analizie-danych.">Projekt z przedmiotu J&#281;zyk Python w analizie danych.<a class="anchor-link" href="#Projekt-z-przedmiotu-J%C4%99zyk-Python-w-analizie-danych.">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Przemysław Skubel, 160466</strong>
-<strong>Inżynieria i analiza danych, rok IV, sem. IX</strong></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Celem mojego projektu jest analiza zbioru Heart Disease pod wzgledem brakujących danych, uzupełnienie ich oraz nauka maszynowa nego zboiru do rozpoznawania czy dany pacjent cierpi na chorobę serca. Zbiór Heart Disease jest to zbiór pobrany ze strony <a href="https://archive.ics.uci.edu/dataset/45/heart+disease">https://archive.ics.uci.edu/dataset/45/heart+disease</a> z kategorii Health and Medicine. Jest on złożony z 13 atrybutów (podstawowa wersja posiada 76) oraz 303 przypadków (pacjentów). Zbiór posaida brakujące dane. Poniżej przedstawię opis poszczególnych cech zbioru.</p>
 
 </div>
@@ -17656,11 +17644,6 @@ Wartość 3: wada odwracalna (zaobserwowano przepływ krwi, ale nie jest on norm
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>[90]
-[268]
-[90]
-[90]
-[27, 81, 107, 131, 144, 166, 197, 199]
-
 [268]
 [90]
 [90]
@@ -18501,7 +18484,7 @@ dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">LeaveOneOut</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -18511,8 +18494,11 @@ dtype: object</pre>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 </pre></div>
 
      </div>
@@ -18639,7 +18625,7 @@ dtype: object</pre>
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>#sk-container-id-24 {color: black;}#sk-container-id-24 pre{padding: 0;}#sk-container-id-24 div.sk-toggleable {background-color: white;}#sk-container-id-24 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-24 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-24 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-24 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-24 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-24 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-24 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-24 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-24 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-24 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-24 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-24 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-24 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-24 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-24 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-24 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-24 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-24 div.sk-item {position: relative;z-index: 1;}#sk-container-id-24 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-24 div.sk-item::before, #sk-container-id-24 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-24 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-24 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-24 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-24 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-24 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-24 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-24 div.sk-label-container {text-align: center;}#sk-container-id-24 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-24 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-24" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-24" type="checkbox" checked><label for="sk-estimator-id-24" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=1000)</pre></div></div></div></div></div>
+<style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=1000)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=1000)</pre></div></div></div></div></div>
 </div>
 
 </div>
@@ -18730,10 +18716,10 @@ dtype: object</pre>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Widzimy, że wynik jest niezły i wynosi 89,47%.</p>
+<p>Widzimy, że wynik jest nienajgorszy i wynosi 89,47%.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
@@ -18741,34 +18727,11 @@ dtype: object</pre>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_test</span><span class="p">,</span><span class="n">Y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[[39  2]
- [ 4 12]]
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -18807,7 +18770,7 @@ dtype: object</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x15fa5cc05b0&gt;</pre>
+<pre>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x176023cfa60&gt;</pre>
 </div>
 
 </div>
@@ -18834,13 +18797,11 @@ dtype: object</pre>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Powyższa macierz mówi nam o tym jak w porównaniu do danych testowych model przewidział dobry wynik. Widzimy, że model przewidział:</p>
-<ul>
-<li>39 razy, że pacjent jest zdrowy</li>
-<li>12 razy, że pacjent jest chory</li>
-<li>2 razy model osobę zdrową sklasyfikował jako chorą</li>
-<li>4 razy model osobę chorą sklasyfikował jako zdrową</li>
-</ul>
+<p>Powyższa macierz mówi nam o tym jak w porównaniu do danych testowych model przewidział dobry wynik. Widzimy, że model przewidział:
+39 razy poprawnie, że pacjent jest zdrowy
+12 razy poprawnie, że pacjent jest chory
+2 razy model osobę zdrową sklasyfikował jako chorą
+4 razy model osobę chorą sklasyfikował jako zdrową</p>
 
 </div>
 </div>
@@ -18907,7 +18868,7 @@ Następnie K-1 (czyli 9) podzbiorów jest używanych do treningu klasyfikatora, 
 <pre>LR: 0.833 (0.0718)
 LDA: 0.824 (0.0526)
 KNN: 0.657 (0.0687)
-DT: 0.714 (0.0725)
+DT: 0.688 (0.0839)
 NB: 0.811 (0.0742)
 SVM: 0.617 (0.0127)
 </pre>
@@ -18948,7 +18909,7 @@ SVM: 0.617 (0.0127)
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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"
+<img src="data:image/png;base64,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"
 >
 </div>
 
@@ -19001,7 +18962,7 @@ SVM: 0.617 (0.0127)
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>#sk-container-id-25 {color: black;}#sk-container-id-25 pre{padding: 0;}#sk-container-id-25 div.sk-toggleable {background-color: white;}#sk-container-id-25 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-25 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-25 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-25 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-25 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-25 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-25 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-25 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-25 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-25 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-25 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-25 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-25 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-25 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-25 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-25 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-25 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-25 div.sk-item {position: relative;z-index: 1;}#sk-container-id-25 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-25 div.sk-item::before, #sk-container-id-25 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-25 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-25 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-25 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-25 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-25 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-25 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-25 div.sk-label-container {text-align: center;}#sk-container-id-25 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-25 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-25" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-25" type="checkbox" checked><label for="sk-estimator-id-25" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div></div></div>
+<style>#sk-container-id-4 {color: black;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier()</pre></div></div></div></div></div>
 </div>
 
 </div>
@@ -19082,19 +19043,19 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |--- class: 1.0
 |   |   |   |--- thalach &gt;  95.00
 |   |   |   |   |--- cp &lt;= 1.50
-|   |   |   |   |   |--- trestbps &lt;= 150.00
-|   |   |   |   |   |   |--- class: 1.0
-|   |   |   |   |   |--- trestbps &gt;  150.00
+|   |   |   |   |   |--- sex &lt;= 0.50
 |   |   |   |   |   |   |--- class: 0.0
+|   |   |   |   |   |--- sex &gt;  0.50
+|   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |--- cp &gt;  1.50
 |   |   |   |   |   |--- age &lt;= 57.50
 |   |   |   |   |   |   |--- exang &lt;= 0.50
 |   |   |   |   |   |   |   |--- trestbps &lt;= 117.50
 |   |   |   |   |   |   |   |   |--- trestbps &lt;= 112.50
 |   |   |   |   |   |   |   |   |   |--- age &lt;= 37.00
-|   |   |   |   |   |   |   |   |   |   |--- chol &lt;= 241.00
+|   |   |   |   |   |   |   |   |   |   |--- age &lt;= 33.50
 |   |   |   |   |   |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |   |   |   |   |   |--- chol &gt;  241.00
+|   |   |   |   |   |   |   |   |   |   |--- age &gt;  33.50
 |   |   |   |   |   |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |   |   |   |   |   |--- age &gt;  37.00
 |   |   |   |   |   |   |   |   |   |   |--- class: 0.0
@@ -19114,10 +19075,10 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |   |   |   |--- chol &gt;  281.50
 |   |   |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |   |--- age &gt;  57.50
-|   |   |   |   |   |   |--- restecg &lt;= 1.50
-|   |   |   |   |   |   |   |--- class: 1.0
-|   |   |   |   |   |   |--- restecg &gt;  1.50
+|   |   |   |   |   |   |--- thalach &lt;= 137.50
 |   |   |   |   |   |   |   |--- class: 0.0
+|   |   |   |   |   |   |--- thalach &gt;  137.50
+|   |   |   |   |   |   |   |--- class: 1.0
 |   |   |--- chol &gt;  456.00
 |   |   |   |--- class: 1.0
 |   |--- cp &gt;  3.50
@@ -19130,10 +19091,10 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |   |--- chol &gt;  219.50
 |   |   |   |   |   |   |--- chol &lt;= 276.50
-|   |   |   |   |   |   |   |--- age &lt;= 47.00
-|   |   |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |   |   |--- age &gt;  47.00
+|   |   |   |   |   |   |   |--- thalach &lt;= 124.00
 |   |   |   |   |   |   |   |   |--- class: 1.0
+|   |   |   |   |   |   |   |--- thalach &gt;  124.00
+|   |   |   |   |   |   |   |   |--- class: 0.0
 |   |   |   |   |   |   |--- chol &gt;  276.50
 |   |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |--- age &gt;  54.50
@@ -19146,12 +19107,12 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |--- thalach &gt;  119.50
 |   |   |   |   |   |--- chol &lt;= 451.50
-|   |   |   |   |   |   |--- thalach &lt;= 149.00
+|   |   |   |   |   |   |--- trestbps &lt;= 142.50
 |   |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |   |--- thalach &gt;  149.00
-|   |   |   |   |   |   |   |--- thalach &lt;= 154.00
+|   |   |   |   |   |   |--- trestbps &gt;  142.50
+|   |   |   |   |   |   |   |--- trestbps &lt;= 147.50
 |   |   |   |   |   |   |   |   |--- class: 1.0
-|   |   |   |   |   |   |   |--- thalach &gt;  154.00
+|   |   |   |   |   |   |   |--- trestbps &gt;  147.50
 |   |   |   |   |   |   |   |   |--- class: 0.0
 |   |   |   |   |   |--- chol &gt;  451.50
 |   |   |   |   |   |   |--- class: 1.0
@@ -19164,19 +19125,19 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |--- thalach &lt;= 148.00
 |   |   |   |   |   |--- class: 0.0
 |   |   |   |   |--- thalach &gt;  148.00
-|   |   |   |   |   |--- chol &lt;= 232.50
+|   |   |   |   |   |--- age &lt;= 52.50
 |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |--- chol &gt;  232.50
+|   |   |   |   |   |--- age &gt;  52.50
 |   |   |   |   |   |   |--- class: 1.0
 |   |   |--- trestbps &gt;  132.50
 |   |   |   |--- exang &lt;= 0.50
-|   |   |   |   |--- chol &lt;= 187.50
-|   |   |   |   |   |--- class: 1.0
-|   |   |   |   |--- chol &gt;  187.50
-|   |   |   |   |   |--- thalach &lt;= 163.50
+|   |   |   |   |--- age &lt;= 52.50
+|   |   |   |   |   |--- thalach &lt;= 142.50
 |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |--- thalach &gt;  163.50
+|   |   |   |   |   |--- thalach &gt;  142.50
 |   |   |   |   |   |   |--- class: 1.0
+|   |   |   |   |--- age &gt;  52.50
+|   |   |   |   |   |--- class: 0.0
 |   |   |   |--- exang &gt;  0.50
 |   |   |   |   |--- class: 1.0
 |   |--- cp &gt;  3.50
@@ -19189,9 +19150,9 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |   |   |--- class: 0.0
 |   |   |   |   |   |--- trestbps &gt;  134.00
 |   |   |   |   |   |   |--- oldpeak &lt;= 1.25
-|   |   |   |   |   |   |   |--- age &lt;= 49.50
+|   |   |   |   |   |   |   |--- chol &lt;= 265.00
 |   |   |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |   |   |--- age &gt;  49.50
+|   |   |   |   |   |   |   |--- chol &gt;  265.00
 |   |   |   |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |   |   |--- oldpeak &gt;  1.25
 |   |   |   |   |   |   |   |--- class: 1.0
@@ -19207,9 +19168,9 @@ SVM: 0.617 (0.0127)
 |   |   |   |   |--- chol &lt;= 360.00
 |   |   |   |   |   |--- class: 1.0
 |   |   |   |   |--- chol &gt;  360.00
-|   |   |   |   |   |--- exang &lt;= 0.50
+|   |   |   |   |   |--- chol &lt;= 376.50
 |   |   |   |   |   |   |--- class: 0.0
-|   |   |   |   |   |--- exang &gt;  0.50
+|   |   |   |   |   |--- chol &gt;  376.50
 |   |   |   |   |   |   |--- class: 1.0
 
 </pre>
